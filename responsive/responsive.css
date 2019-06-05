@@ -1,0 +1,129 @@
+/*
+ * Katelyn Eustace
+ * Responsive Design Lab
+ * COMP 20
+ * June 4, 2019
+ */
+
+/*
+ * If the browser screen width is greater than 1200 pixels, display the top-left
+ * image of software.png (i.e., the one that reads "How the customer explained
+ * it")
+ */
+.software {
+        width:128px;
+        height:240px;
+        background:url(software.png) 0px 0px;
+}
+
+/*
+ * If the browser screen width is greater than 1100 pixels but less than or
+ * equal to 1200 pixels, display the second image on the top row (i.e.,
+ * "How the Project Leader understood it").
+ */
+
+@media all and (max-width: 1200px) {
+        .software {
+                width:128px;
+                height:240px;
+                background:url(software.png) -128px 0px;
+        }
+}
+
+/*
+ * If the browser screen width is greater than 1000 pixels but less than or
+ * equal to 1100 pixels, display the third image on the top row (i.e., "How
+ * the Analyst designed it").
+ */
+@media all and (max-width: 1100px) {
+         .software {
+                 width:128px;
+                 height:240px;
+                 background:url(software.png) -256px 0px;
+         }
+}
+
+/*
+ * If the browser screen width is greater than 900 pixels but less than or
+ * equal to 1000 pixels, display the fourth image on the top row.
+ */
+@media all and (max-width: 1000px) {
+         .software {
+                 width:128px;
+                 height:240px;
+                 background:url(software.png) -384px 0px;
+         }
+}
+
+/*
+ * If the browser screen width is greater than 800 pixels but less than or
+ * equal to 900 pixels, display the last image on the top row.
+ */
+@media all and (max-width: 900px) {
+         .software {
+                 width:128px;
+                 height:240px;
+                 background:url(software.png) -512px 0px;
+         }
+}
+
+/*
+ * If the browser screen width is greater than 700 pixels but less than or
+ * equal to 800 pixels, display the first image on the second row ("How the
+ * project was documented").
+ */
+@media all and (max-width: 800px) {
+         .software {
+                 width:128px;
+                 height:240px;
+                 background:url(software.png) 0px -240px;
+         }
+}
+
+/*
+ * If the browser screen width is greater than 600 pixels but less than or
+ * equal to 700 pixels, display the second image on the second row.
+ */
+@media all and (max-width: 700px) {
+         .software {
+                 width:128px;
+                 height:240px;
+                 background:url(software.png) -128px -240px;
+         }
+}
+
+/*
+ * If the browser screen width is greater than 500 pixels but less than or
+ * equal to 600 pixels, display the third image on the second row.
+ */
+@media all and (max-width: 600px) {
+         .software {
+                 width:128px;
+                 height:240px;
+                 background:url(software.png) -256px -240px;
+         }
+}
+
+/*
+ * If the browser screen width is greater than 400 pixels but less than or
+ * equal to 500 pixels, display the fourth image on the second row.
+ */
+@media all and (max-width: 500px) {
+         .software {
+                 width:128px;
+                 height:240px;
+                 background:url(software.png) -384px -240px;
+         }
+}
+
+/*
+ * If the browser screen width is less than or equal to 400 pixels, display
+ * the last image, bottom-right ("What the customer really needed").
+ */
+@media all and (max-width: 400px) {
+         .software {
+                 width:128px;
+                 height:240px;
+                 background:url(software.png) -512px -240px;
+         }
+}
