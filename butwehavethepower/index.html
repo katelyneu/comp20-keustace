@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Union Strike Folk Song</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+<h1 id="title">Union Strike Folk Song</h1>
+
+<video src="https://www.cs.tufts.edu/comp/20/butwehavethepower.mp4" id="butwehavethepower" controls></video>
+<div id="lyrics"></div>
+
+<script>
+        function subtitles() {
+                if (butwehavethepower.currentTime < 6) {
+                        document.getElementById("lyrics").innerHTML = "";
+                } else if (butwehavethepower.currentTime <= 8) {
+                        document.getElementById("lyrics").innerHTML =
+                        "Come gather round, children,";
+                } else if (butwehavethepower.currentTime <= 11) {
+                        document.getElementById("lyrics").innerHTML =
+                        "It's high time ye learned";
+                } else if (butwehavethepower.currentTime <= 13) {
+                        document.getElementById("lyrics").innerHTML =
+                        "'Bout a hero named Homer";
+                } else if (butwehavethepower.currentTime <= 15) {
+                        document.getElementById("lyrics").innerHTML =
+                        "And a devil named Burns.";
+                } else if (butwehavethepower.currentTime <= 16) {
+                        document.getElementById("lyrics").innerHTML = "";
+                } else if (butwehavethepower.currentTime <= 19) {
+                        document.getElementById("lyrics").innerHTML =
+                        "We'll march 'till we drop";
+                } else if (butwehavethepower.currentTime <= 21) {
+                        document.getElementById("lyrics").innerHTML =
+                        "The girls and the fellas.";
+                } else if (butwehavethepower.currentTime <= 23) {
+                        document.getElementById("lyrics").innerHTML =
+                        "We'll fight 'till the death ";
+                } else if (butwehavethepower.currentTime <= 27) {
+                        document.getElementById("lyrics").innerHTML =
+                        "Or else fold like umbrellas.";
+                } else if (butwehavethepower.currentTime <= 28) {
+                        document.getElementById("lyrics").innerHTML =
+                        "Workers: Angry cheers";
+                } else if (butwehavethepower.currentTime <= 30) {
+                        document.getElementById("lyrics").innerHTML =
+                        "Burns: Full power Smithers";
+                } else if (butwehavethepower.currentTime <= 31) {
+                        document.getElementById("lyrics").innerHTML =
+                        "*Smithers turns on hose*";
+                } else if (butwehavethepower.currentTime <= 36) {
+                        document.getElementById("lyrics").innerHTML =
+                        "Burns: Ahhhhhhhh";
+                } else if (butwehavethepower.currentTime <= 38) {
+                        document.getElementById("lyrics").innerHTML = "";
+                } else if (butwehavethepower.currentTime <= 40) {
+                        document.getElementById("lyrics").innerHTML =
+                        "So we'll march day and night";
+                } else if (butwehavethepower.currentTime <= 42) {
+                        document.getElementById("lyrics").innerHTML =
+                        "By the big cooling tower.";
+                } else if (butwehavethepower.currentTime <= 44) {
+                        document.getElementById("lyrics").innerHTML =
+                        "They have the plant";
+                } else if (butwehavethepower.currentTime <= 49) {
+                        document.getElementById("lyrics").innerHTML =
+                        "But we have the power.";
+                } else if (butwehavethepower.currentTime <= 55) {
+                        document.getElementById("lyrics").innerHTML =
+                        "Lenny: Now do \"Classical Gas!\"";
+                } else if (butwehavethepower.currentTime <= 68) {
+                        document.getElementById("lyrics").innerHTML =
+                        "*Lisa plays a song*";
+                } else if (butwehavethepower.currentTime <= 72) {
+                        document.getElementById("lyrics").innerHTML =
+                        "";
+                } else if (butwehavethepower.currentTime <= 74) {
+                        document.getElementById("lyrics").innerHTML =
+                        "So we'll march day and night";
+                } else if (butwehavethepower.currentTime <= 77) {
+                        document.getElementById("lyrics").innerHTML =
+                        "By the big cooling tower.";
+                } else if (butwehavethepower.currentTime <= 79) {
+                        document.getElementById("lyrics").innerHTML =
+                        "They have the plant";
+                } else if (butwehavethepower.currentTime <= 82) {
+                        document.getElementById("lyrics").innerHTML =
+                        "But we have the power.";
+                } else if (butwehavethepower.currentTime <= 84) {
+                        document.getElementById("lyrics").innerHTML =
+                        "So we'll march day and night";
+                } else if (butwehavethepower.currentTime <= 86) {
+                        document.getElementById("lyrics").innerHTML =
+                        "By the big cooling tower.";
+                } else if (butwehavethepower.currentTime <= 89) {
+                        document.getElementById("lyrics").innerHTML =
+                        "They have the plant";
+                } else if (butwehavethepower.currentTime <= 91) {
+                        document.getElementById("lyrics").innerHTML =
+                        "But we have the power.";
+                } else {
+                        document.getElementById("lyrics").innerHTML = "";
+                }
+
+        }
+        butwehavethepower.addEventListener("timeupdate", subtitles);
+</script>
+</body>
+</html>
