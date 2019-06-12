@@ -1,0 +1,25 @@
+h1 {
+        font-family: 'Walter Turncoat', cursive;
+        font-size: 60px;
+        margin: auto;
+        width: 80%;
+        color: rgb(255,217,15);
+}
+
+body {
+
+        background: rgb(112, 209, 254);
+}
+
+video {
+        display: block;
+        margin: auto;
+}
+
+#lyrics {
+        font-family: 'Walter Turncoat', cursive;
+        font-size: 40px;
+        margin: auto;
+        width: 75%;
+        color: rgb(255,217,15);
+}
