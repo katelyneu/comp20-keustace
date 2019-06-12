@@ -14,7 +14,10 @@
                         var message_board = document.getElementById("messages");
                         for (i = 0; i < array.length; i++) {
                                 data = array[i];
-                                message_board.innerHTML += data['content'] + " " + data['username'] + "\n";
+                                var new_message = document.createElement("p");
+                                var node = document.createTextNode(data['content'] + " " + data['username'] + "\n");
+                                new_message.appendChild(node);
+                                message_board.appendChild(new_message);
                         }
                 }
         </script>
