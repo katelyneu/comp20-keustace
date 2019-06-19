@@ -1,23 +1,35 @@
-// username is Nu1F3c79
+// Katelyn Eustace
+// COMP20 2019
+// June 19th, 2019
+
 var map;
 var http = new XMLHttpRequest();
 var url = 'https://hans-moleman.herokuapp.com/rides';
-username = 'Nu1F3c79';
-locations = [{lat: 42.3453, lng: -71.0464},
-                {lat: 42.3662, lng: -71.0621},
-                {lat: 42.3603, lng: -71.0547},
-                {lat: 42.3472, lng: -71.0802},
-                {lat: 42.3663, lng: -71.0544},
-                {lat: 42.3542, lng: -71.0704}]
+var username = 'Nu1F3c79';
 
-function placeCars(){
+// place the cars using the JSON data recieved from the server
+function placeCars(jsonData){
         var i;
-        for (i = 0; i < locations.length; i++)
+        var car;
+        var cars = JSON.parse(jsonData);
+        for (i = 0; i < cars.length; i++)
         {
-                var marker = new google.maps.Marker({position: locations[i], map: map, icon: 'images/car.png'});
+                car = cars[i];
+                var marker = new google.maps.Marker({
+                        position: {lat: car['lat'], lng: car['lng']},
+                        map: map,
+                        icon: 'images/car.png',
+                        id: car['id'],
+                        username: car['username']
+                });
+
+                marker.addListener('click', function() {
+                        alert(this.username);
+                });
         }
 }
 
+// place the cars using the JSON data recieved from the server
 function sendRequest(lat, long){
         var params = "username=" + username + "&lat=" + lat + "&lng=" + long;
         http.open('POST', url, true);
@@ -27,7 +39,7 @@ function sendRequest(lat, long){
 
         http.onreadystatechange = function() {//Call a function when the state changes.
             if(http.readyState == 4 && http.status == 200) {
-                console.log(this.responseText);
+                    placeCars(this.responseText);
             }
         }
         http.send(params);
@@ -55,6 +67,5 @@ function initMap() {
                         center: {lat: 42.352271, lng: -71.05524200000001},
                         zoom: 14
         });
-        placeCars();
         currentPosition();
 }
