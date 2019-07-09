@@ -55,6 +55,7 @@ function sendRequest(){
         http.onreadystatechange = function() {//Call a function when the state changes.
             if(http.readyState == 4 && http.status == 200) {
                    var jsonData = this.responseText;
+                   console.log(jsonData);
                    var carData = JSON.parse(jsonData);
                    var carLat, carLng, carID, carUsername;
                    for (var i = 0; i < carData.length; i++)
