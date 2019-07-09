@@ -3,35 +3,44 @@
 // June 19th, 2019
 
 var map;
-var http = new XMLHttpRequest();
-var url = 'https://hans-moleman.herokuapp.com/rides';
-var username = 'Nu1F3c79';
-var markers = [];
+var latIndex = 1;
+var lngIndex = 2;
+var idIndex = 3;
+var usernameIndex = 4;
+var conversionFactor = .000621371;
+var cars = [];
+var pathCoordinates = {lat: 0, lng: 0};
 var latitude = 42.352271;
 var longitude = -71.05524200000001;
+var content;
+var shortestDistance;
+var http = new XMLHttpRequest();
+var username = 'Nu1F3c79';
+var url = 'https://peaceful-cuyahoga-valley-68827.herokuapp.com/rides';
 
-// place the cars using the JSON data recieved from the server
-function placeCars(jsonData){
-        var i;
-        var car;
-        var cars = JSON.parse(jsonData);
-        var my_pos = new google.maps.LatLng(latitude, longitude);
-        for (i = 0; i < cars.length; i++)
+function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: 42.352271, lng: -71.05524200000001},
+                        zoom: 14
+        });
+        sendRequest();
+}
+
+function currentPosition()
+{
+        // watchPosition enables the location to update as the user moves
+        if (navigator.geolocation)
         {
-                car = cars[i];
-                var car_pos = new google.maps.LatLng(car['lat'], car['lng']);
-                var marker = new google.maps.Marker({
-                        position: {lat: car['lat'], lng: car['lng']},
-                        map: map,
-                        icon: 'images/car.png',
-                        id: car['id'],
-                        username: car['username'],
+                navigator.geolocation.watchPosition(function(setPosition) {
+                        latitude = position.coords.latitude;
+                        longitude = position.coords.longitude;
+                        var pos = {lat: latitude, lng: longitude};
+                        map.setCenter(pos);
+                        var marker = new google.maps.Marker({position: pos, map: map});
                 });
-
-                marker.addListener('click', function() {
-                        alert(this.username);
-                });
-                markers.push(marker);
+        }
+        else {
+                alert("Error: cannot access location");
         }
 }
 
@@ -45,44 +54,73 @@ function sendRequest(){
 
         http.onreadystatechange = function() {//Call a function when the state changes.
             if(http.readyState == 4 && http.status == 200) {
-                    placeCars(this.responseText);
+                   var jsonData = this.responseText;
+                   var carData = JSON.parse(jsonData);
+                   var carLat, carLng, carID, carUsername;
+                   for (var i = 0; i < carData.length; i++)
+                   {
+                           var car = carData[i];
+                           carLat = car['lat'];
+                           carLng = car['lng'];
+                           carID = car['id'];
+                           carUsername = car['username'];
+                           cars.push([carLat, carLng, carID, carUsername, i]);
+                           shortest = findPath(i, car);
+                   }
+                   getCurrentPosition();
+                   setMarkers();
+                   setPath(); //TODO
             }
         }
         http.send(params);
 }
 
-function currentPosition()
+function setPath()
 {
-        // watchPosition enables the location to update as the user moves
-        if (navigator.geolocation)
+
+}
+
+function setMarkers() {
+        for (var i = 0; i++; i < cars.length)
         {
-                navigator.geolocation.watchPosition(setPosition);
+                car = cars[i];
+                var carContent = "ID: " + car[idIndex] + "\n"
+                        + "username: " + car[usernameIndex] + "\n"
+                        + "location: " + car[latIndex] + ", " + car[lngIndex];
+                var car_pos = new google.maps.LatLng(car[latIndex], car[lngIndex]);
+                var marker = new google.maps.Marker({
+                        position: {lat: car[latIndex], lng: car[lngIndex]},
+                        map: map,
+                        icon: 'images/car.png',
+                        id: car[idIndex],
+                        username: car[usernameIndex],
+                        content: carContent
+                });
+
+                var infoWindow = new google.maps.infoWindow();
+                marker.addListener('click', function() {
+                        infoWindow.setContent(carContent);
+                        infoWindow.open(map, marker);
+                });
         }
 }
 
-function setPosition (position)
+function findPath(i, car)
 {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
-        var pos = {lat: latitude, lng: longitude};
-        map.setCenter(pos);
-        var marker = new google.maps.Marker({position: pos, map: map});
+        car = cars[i];
+        distance = computeDistance(car);
+        if (distance < shortestDistance)
+        {
+                shortestDistance = distance;
+                pathCoordinates= {lat: car[latIndex], lng: car[lngIndex]};
+        }
 }
 
-function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-                        center: {lat: 42.352271, lng: -71.05524200000001},
-                        zoom: 14
-        });
-        currentPosition();
-        sendRequest();
-
-        // // moves the markers around the map
-        // setInterval(function(){
-        //         var i;
-        //         for (i = 0; i < markers.length; i++)
-        //         {
-        //
-        //         }
-        // }, 3000);
+function computeDistance(car)
+{
+        var pointA = new google.maps.LatLng(car[latIndex], car[lngIndex]);
+        var pointB = new google.maps.Latlng(latitude, longitude);
+        var distance = google.maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
+        distance = distance * conversionFactor;
+        return distance;
 }
