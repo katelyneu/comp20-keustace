@@ -67,9 +67,9 @@ function sendRequest(){
                            cars.push([carLat, carLng, carID, carUsername, i]);
                            shortest = findPath(i, car);
                    }
-                   getCurrentPosition();
+                   currentPosition();
                    setMarkers();
-                   setPath(); //TODO
+                   setPath();
             }
         }
         http.send(params);
