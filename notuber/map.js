@@ -31,7 +31,7 @@ function currentPosition()
         // watchPosition enables the location to update as the user moves
         if (navigator.geolocation)
         {
-                navigator.geolocation.watchPosition(function(setPosition) {
+                navigator.geolocation.watchPosition(function(position) {
                         latitude = position.coords.latitude;
                         longitude = position.coords.longitude;
                         var pos = {lat: latitude, lng: longitude};
