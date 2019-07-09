@@ -119,7 +119,7 @@ function findPath(i, car)
 function computeDistance(car)
 {
         var pointA = new google.maps.LatLng(car[latIndex], car[lngIndex]);
-        var pointB = new google.maps.Latlng(latitude, longitude);
+        var pointB = new google.maps.LatLng(latitude, longitude);
         var distance = google.maps.geometry.spherical.computeDistanceBetween(pointA, pointB);
         distance = distance * conversionFactor;
         return distance;
