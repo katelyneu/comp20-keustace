@@ -82,12 +82,14 @@ function setPath()
 }
 
 function setMarkers() {
+        console.log(cars);
         for (var i = 0; i++; i < cars.length)
         {
                 car = cars[i];
                 var carContent = "ID: " + car[idIndex] + "\n"
                         + "username: " + car[usernameIndex] + "\n"
                         + "location: " + car[latIndex] + ", " + car[lngIndex];
+                console.log(carContent);
                 var car_pos = new google.maps.LatLng(car[latIndex], car[lngIndex]);
                 var marker = new google.maps.Marker({
                         position: {lat: car[latIndex], lng: car[lngIndex]},
