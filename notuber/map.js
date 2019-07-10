@@ -68,6 +68,8 @@ function sendRequest(){
                            cars.push([carLat, carLng, carID, carUsername, i]);
                            shortest = findPath(i, car);
                    }
+                   console.log("CARS:");
+                   console.log(cars);
                    currentPosition();
                    setMarkers();
                    setPath();
