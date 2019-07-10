@@ -99,7 +99,7 @@ function setMarkers() {
                         content: carContent
                 });
 
-                var infoWindow = new google.maps.infoWindow();
+                var infoWindow = new google.maps.InfoWindow();
                 marker.addListener('click', function() {
                         infoWindow.setContent(carContent);
                         infoWindow.open(map, marker);
