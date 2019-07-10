@@ -3,10 +3,10 @@
 // June 19th, 2019
 
 var map;
-var latIndex = 1;
-var lngIndex = 2;
-var idIndex = 3;
-var usernameIndex = 4;
+var latIndex = 0;
+var lngIndex = 1;
+var idIndex = 2;
+var usernameIndex = 3;
 var conversionFactor = .000621371;
 var cars = [];
 var pathCoordinates = {lat: 0, lng: 0};
