@@ -56,7 +56,6 @@ function sendRequest(){
             if(http.readyState == 4 && http.status == 200) {
                    var jsonData = this.responseText;
                    var carData = JSON.parse(jsonData);
-                   console.log(carData);
                    var carLat, carLng, carID, carUsername;
                    for (var i = 0; i < carData.length; i++)
                    {
@@ -68,7 +67,6 @@ function sendRequest(){
                            cars.push([carLat, carLng, carID, carUsername, i]);
                            shortest = findPath(i, car);
                    }
-                   console.log("CARS:");
                    console.log(cars);
                    currentPosition();
                    setMarkers();
