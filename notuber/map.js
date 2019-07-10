@@ -63,7 +63,7 @@ function sendRequest(){
                            var car = carData[i];
                            carLat = car['lat'];
                            carLng = car['lng'];
-                           carID = car['id'];
+                           carID = car['_id'];
                            carUsername = car['username'];
                            cars.push([carLat, carLng, carID, carUsername, i]);
                            shortest = findPath(i, car);
