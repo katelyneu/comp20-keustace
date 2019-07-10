@@ -82,8 +82,7 @@ function setPath()
 }
 
 function setMarkers() {
-        console.log(cars);
-        for (var i = 0; i++; i < cars.length)
+        for (var i = 0; i < cars.length; i++)
         {
                 car = cars[i];
                 var carContent = "ID: " + car[idIndex] + "\n"
