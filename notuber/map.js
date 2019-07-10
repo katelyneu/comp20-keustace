@@ -35,6 +35,7 @@ function currentPosition()
                         latitude = position.coords.latitude;
                         longitude = position.coords.longitude;
                         var pos = {lat: latitude, lng: longitude};
+                        console.log("CENTERING");
                         map.setCenter(pos);
                         var marker = new google.maps.Marker({position: pos, map: map});
                 });
