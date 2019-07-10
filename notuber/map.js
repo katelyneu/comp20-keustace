@@ -31,13 +31,10 @@ function currentPosition()
         // watchPosition enables the location to update as the user moves
         if (navigator.geolocation)
         {
-                console.log("HEREEEE");
                 navigator.geolocation.watchPosition(function(position) {
-                        console.log("HERE");
                         latitude = position.coords.latitude;
                         longitude = position.coords.longitude;
                         var pos = {lat: latitude, lng: longitude};
-                        console.log("CENTERING");
                         map.setCenter(pos);
                         var marker = new google.maps.Marker({position: pos, map: map});
                 });
@@ -104,7 +101,7 @@ function setMarkers() {
 
                 var infoWindow = new google.maps.InfoWindow();
                 marker.addListener('click', function() {
-                        infoWindow.setContent(carContent);
+                        infoWindow.setContent(marker['content']);
                         infoWindow.open(map, marker);
                 });
         }
