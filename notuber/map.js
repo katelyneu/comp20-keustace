@@ -67,6 +67,7 @@ function sendRequest(){
                            cars.push([carLat, carLng, carID, carUsername, i]);
                            shortest = findPath(i, car);
                    }
+                   console.log(cars);
                    currentPosition();
                    setMarkers();
                    setPath();
@@ -87,7 +88,7 @@ function setMarkers() {
                 var carContent = "ID: " + car[idIndex] + "\n"
                         + "username: " + car[usernameIndex] + "\n"
                         + "location: " + car[latIndex] + ", " + car[lngIndex];
-
+                console.log(carContent);
                 var car_pos = new google.maps.LatLng(car[latIndex], car[lngIndex]);
                 var marker = new google.maps.Marker({
                         position: {lat: car[latIndex], lng: car[lngIndex]},
@@ -95,13 +96,12 @@ function setMarkers() {
                         icon: 'images/car.png',
                         id: car[idIndex],
                         username: car[usernameIndex],
-                });
-
-                var infoWindow = new google.maps.InfoWindow({
                         content: carContent
                 });
 
+                var infoWindow = new google.maps.InfoWindow();
                 marker.addListener('click', function() {
+                        infoWindow.setContent(carContent);
                         infoWindow.open(map, marker);
                 });
         }
